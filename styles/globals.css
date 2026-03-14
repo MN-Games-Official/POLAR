@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #041019;
+  --background-muted: rgba(11, 26, 39, 0.72);
+  --panel: rgba(9, 24, 38, 0.78);
+  --border: rgba(178, 216, 246, 0.12);
+  --border-strong: rgba(178, 216, 246, 0.22);
+  --foreground: #f2f8fc;
+  --foreground-muted: #9db4c8;
+  --accent: #ff7e6d;
+  --accent-2: #a8ffdd;
+  --accent-3: #ffd36e;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(255, 126, 109, 0.15), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(168, 255, 221, 0.12), transparent 30%),
+    linear-gradient(180deg, #041019 0%, #081522 48%, #0b1d2c 100%);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: rgba(255, 126, 109, 0.3);
+  color: white;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-white;
+  }
+
+  p {
+    @apply text-sm leading-6 text-slate-300;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .app-shell::before,
+  .app-shell::after {
+    content: "";
+    position: fixed;
+    inset: auto;
+    width: 34rem;
+    height: 34rem;
+    border-radius: 9999px;
+    pointer-events: none;
+    filter: blur(70px);
+    z-index: -1;
+    opacity: 0.35;
+  }
+
+  .app-shell::before {
+    top: -10rem;
+    right: -12rem;
+    background: radial-gradient(circle, rgba(255, 126, 109, 0.45), transparent 62%);
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .app-shell::after {
+    bottom: -14rem;
+    left: -12rem;
+    background: radial-gradient(circle, rgba(168, 255, 221, 0.28), transparent 60%);
+    animation: float-slow 12s ease-in-out infinite reverse;
+  }
+
+  .glass-panel {
+    @apply border border-white/10 bg-slate-950/50 shadow-panel backdrop-blur-xl;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(220, 234, 247, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220, 234, 247, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .dashboard-card {
+    @apply glass-panel rounded-[1.75rem] border border-white/10 p-6 transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .shine-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-border::after {
+    content: "";
+    position: absolute;
+    inset: -140% auto 0 -40%;
+    width: 26%;
+    transform: skewX(-18deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.26),
+      transparent
+    );
+    transition: transform 0.9s ease;
+  }
+
+  .shine-border:hover::after {
+    transform: translateX(540%) skewX(-18deg);
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold md:text-3xl;
+  }
+
+  .section-caption {
+    @apply max-w-2xl text-sm text-slate-400 md:text-base;
+  }
+}
+
