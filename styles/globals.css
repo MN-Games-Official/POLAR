@@ -61,7 +61,7 @@ body {
 
 @layer components {
   .app-shell {
-    @apply relative overflow-hidden;
+    @apply relative;
   }
 
   .app-shell::before,
