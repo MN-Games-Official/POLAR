@@ -19,6 +19,7 @@
 html {
   min-height: 100%;
   background: var(--background);
+  overflow-y: scroll;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
     linear-gradient(180deg, #041019 0%, #081522 48%, #0b1d2c 100%);
   color: var(--foreground);
   font-family: var(--font-space-grotesk), sans-serif;
+  overflow-y: scroll;
 }
 
 * {
